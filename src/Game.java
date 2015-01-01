@@ -3,37 +3,36 @@ import java.util.*;
 public class Game
 {
 	List<Entity> entities = new ArrayList<Entity>();
+	private Timer timer;
+	private TimerTask clock;
 	
 	private void create()
 	{
+		timer = new Timer();
+		clock = new Clock(this);
+		timer.scheduleAtFixedRate(clock, 1000, 1000);
 		Player player = new Player(this);
 		player.addToWorld();
-		HealthModifier damageFromNowhere = new HealthModifier(player, -70, "Damage from no where -70");
-		HealthModifier beginerLuck = new HealthModifier(player, 15, 3000, "Beginner luck +15");
-		HealthModifier nturalRegen = new HealthModifier(player, 0.5F, 0, "Regen +0.5");
+		new HealthModifier(player, -70, -1, "Damage from no where -70");
+		new HealthModifier(player, 15, 3000, "Beginner luck +15");
+		new HealthModifier(player, 0.5F, "Regen +0.5");
+		new FoodModifier(player, -1, "Hunger -1");
+
 	}
 
-	private void update()
+	public void update()
 	{
 		// Update Entities
-		for (Entity e : entities) { e.update(); }
+		if (!entities.isEmpty())
+			for (int i = 0; i < entities.size(); i++)
+			{
+				entities.get(i).update();
+			}
 		
 	}
 	
 	public void run()
 	{
 		create();
-
-		while (true)
-		{
-			// Game loop
-			update();
-			try
-			{
-				Thread.sleep(1000);
-			}
-			catch (InterruptedException e)
-			{}
-		}
 	}
 }

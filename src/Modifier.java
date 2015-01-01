@@ -1,17 +1,15 @@
 import java.util.*;
-import java.util.concurrent.*;
-import java.sql.*;
 
 public class Modifier
 {
-	float timeLenght;
+	float period = -2.0F;
 	long startTime = System.nanoTime();
 	List<Modifier> list;
 	String name;
 	Player player;
 	float value;
 	
-	private boolean timeComplete;
+	private boolean isDone;
 
 	
 	public Modifier(Player player, float value, String name)
@@ -23,12 +21,12 @@ public class Modifier
 		list.add(this);
 	}
 
-	public Modifier(Player player, float value, float timeLenght, String name)
+	public Modifier(Player player, float value, float period, String name)
 	{
 		this.player = player;
 		this.value = value;
 		this.name = name;
-		this.timeLenght = timeLenght;
+		this.period = period;
 		this.list = player.modifiers;
 		list.add(this);
 	}
@@ -44,18 +42,23 @@ public class Modifier
 	}
 	
 	public void update() {
-		if (timeComplete) {destroy(); return;}
-		if (!(timeLenght <= 0.0F)) {
-			long currentTime = System.nanoTime();
-			if((currentTime - startTime) / 1000000  >= timeLenght) {
-				timeComplete = true;
-			}
-		} else if (timeLenght == -1.0F)
+		if (period == -1.0F)
 		{
-			timeComplete = true;
-			destroy();
+			isDone = true;
 		}
-		
+		else if (period == -2.0F)
+		{
+			return;
+		}
+		else
+		{
+			long currentTime = System.nanoTime();
+			if((currentTime - startTime) / 1000000  > period)
+			{
+				isDone = true;
+			}
+		}
+		if (isDone) destroy();
 	}
 
 	public void destroy()
