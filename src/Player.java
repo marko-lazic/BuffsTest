@@ -20,12 +20,12 @@ public class Player extends Entity
 	public void update()
 	{
 		artificialIntelligence.update(this);
-		String modifierNames = getModifiers();
+
 		for (int i = 0; i < modifiers.size(); i++)
 		{
 			modifiers.get(i).update();
 		}
-		printStat(modifierNames);
+		printStat(toModifierString());
 		if (feed <= 0) {
 			new HealthModifier(this, -5, -1, "Starvation -5");
 		}
@@ -46,7 +46,7 @@ public class Player extends Entity
 		System.out.println();
 	}
 
-	private String getModifiers()
+	private String toModifierString()
 	{
 		String modifierNames = "";
 		if (!modifiers.isEmpty())
