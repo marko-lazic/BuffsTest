@@ -16,7 +16,7 @@ public class Game
 		new HealthModifier(player, -70, -1, "Damage from no where -70");
 		new HealthModifier(player, 15, 3000, "Beginner luck +15");
 		new HealthModifier(player, 0.5F, "Regen +0.5");
-		new FoodModifier(player, -15, "Hunger -15");
+		new FoodModifier(player, -15.0F, "Hunger -15");
 
 	}
 

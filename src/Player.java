@@ -4,7 +4,7 @@ import java.util.*;
 public class Player extends Entity
 {
 	float health = 1.0F;
-	float brain = 1.0F;
+	float intelligence = 1.0F;
 	float feed = 0.90F;
 	private ArtificialIntelligence artificialIntelligence;
 	
@@ -41,7 +41,7 @@ public class Player extends Entity
 		
 		System.out.print("h: " + (int) ( getHealth() * 100) + " " + 
 							"f: " + (int) ( getFeed() * 100) + " " +
-							"b: " + (int) ( getBrain() * 100));
+							"b: " + (int) ( getIntelligence() * 100));
 		System.out.print(modifierNames);
 		System.out.println();
 	}
@@ -64,7 +64,8 @@ public class Player extends Entity
 	public void setFeed(float feed)
 	{
 		this.feed = feed;
-		if (this.feed < 0) this.feed = 0;
+		if (this.feed < 0.0F) this.feed = 0.0F;
+		if (this.feed > 1.0F) this.feed = 1.0F;
 	}
 
 	public float getFeed()
@@ -72,19 +73,23 @@ public class Player extends Entity
 		return feed;
 	}
 
-	public void setBrain(float brain)
+	public void setIntelligence(float intelligence)
 	{
-		this.brain = brain;
+		this.intelligence = intelligence;
+		if (this.intelligence < 0.0F)  this.intelligence = 0.0F;
+		if (this.intelligence > 1.0F) this.intelligence = 1.0F;
 	}
 
-	public float getBrain()
+	public float getIntelligence()
 	{
-		return brain;
+		return intelligence;
 	}
 
 	public void setHealth(float health)
 	{
 		this.health = health;
+		if (this.health < 0.0F) this.health = 0.0F;
+		if (this.health > 1.0F) this.health = 1.0F;
 	}
 
 	public float getHealth()
