@@ -1,3 +1,5 @@
+package net.markoslab;
+
 /**
  * Created by marko on 1/1/15.
  */

@@ -1,3 +1,4 @@
+package net.markoslab;
 
 import java.util.*;
 
@@ -31,7 +32,7 @@ public class Player extends Entity
 		}
 		if (health <= 0)
 		{
-			System.out.print("Player died.");
+			System.out.print("net.markoslab.Player died.");
 			die();
 		}
 	}

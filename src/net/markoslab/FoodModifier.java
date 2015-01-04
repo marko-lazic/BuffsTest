@@ -1,3 +1,5 @@
+package net.markoslab;
+
 public class FoodModifier extends Modifier
 {
 

@@ -1,3 +1,5 @@
+package net.markoslab;
+
 import java.util.*;
 
 public class Entity
