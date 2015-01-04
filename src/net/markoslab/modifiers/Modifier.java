@@ -10,19 +10,11 @@ import java.util.List;
  */
 public abstract class Modifier {
 
-    protected List<Modifier> list;
-    protected Player player;
-    private String description;
+    private String description = "Unknown modifier.";
 
-    public Modifier(Player player) {
-        this.player = player;
-        this.list = player.getModifiers();
+    public abstract void update(Player player);
 
-    }
-
-    public abstract void update();
-
-    public void destroy() {
+    public void destroy(List<Modifier> list) {
         if (list.contains(this))
         {
             Iterator<Modifier> iter = list.iterator();
