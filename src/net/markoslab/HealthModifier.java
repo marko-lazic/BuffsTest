@@ -1,6 +1,6 @@
 package net.markoslab;
 
-public class HealthModifier extends Modifier
+public class HealthModifier extends MModifier
 {
 
 	public HealthModifier(Player player, float value, float period, String name)

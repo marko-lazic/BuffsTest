@@ -2,11 +2,11 @@ package net.markoslab;
 
 import java.util.*;
 
-public class Modifier
+public class MModifier
 {
 	float period = -2.0F;
 	long startTime = System.nanoTime();
-	List<Modifier> list;
+	List<MModifier> list;
 	String name;
 	Player player;
 	float value;
@@ -14,22 +14,22 @@ public class Modifier
 	private boolean isDone;
 
 	
-	public Modifier(Player player, float value, String name)
+	public MModifier(Player player, float value, String name)
 	{
 		this.player = player;
 		this.value = value;
 		this.name = name;
-		this.list = player.modifiers;
+		//this.list = player.getModifiers();
 		list.add(this);
 	}
 
-	public Modifier(Player player, float value, float period, String name)
+	public MModifier(Player player, float value, float period, String name)
 	{
 		this.player = player;
 		this.value = value;
 		this.name = name;
 		this.period = period;
-		this.list = player.modifiers;
+		//this.list = player.getModifiers();
 		list.add(this);
 	}
 
@@ -67,7 +67,7 @@ public class Modifier
 	{
 		if (list.contains(this)) 
 		{
-			Iterator<Modifier> iter = list.iterator();
+			Iterator<MModifier> iter = list.iterator();
 			while(iter.hasNext())
 			{
 				if (iter.next() == this) iter.remove();

@@ -1,6 +1,6 @@
 package net.markoslab;
 
-public class FoodModifier extends Modifier
+public class FoodModifier extends MModifier
 {
 
 	@Override

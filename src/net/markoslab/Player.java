@@ -1,5 +1,7 @@
 package net.markoslab;
 
+import net.markoslab.modifiers.Modifier;
+
 import java.util.*;
 
 public class Player extends Entity
@@ -8,8 +10,12 @@ public class Player extends Entity
 	float intelligence = 1.0F;
 	float feed = 0.90F;
 	private ArtificialIntelligence artificialIntelligence;
-	
-	List<Modifier> modifiers = new ArrayList<Modifier>();
+
+	public List<Modifier> getModifiers() {
+		return modifiers;
+	}
+
+	private List<Modifier> modifiers = new ArrayList<Modifier>();
 	
 	public Player(Game game)
 	{
@@ -52,7 +58,7 @@ public class Player extends Entity
 		String modifierNames = "";
 		if (!modifiers.isEmpty())
 		{
-			for (Modifier m : modifiers) { modifierNames += ", " + m.getName();}
+			for (Modifier m : modifiers) { modifierNames += ", " + m.getDescription();}
 		}
 		return modifierNames;
 	}
