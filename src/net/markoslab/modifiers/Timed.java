@@ -7,29 +7,39 @@ import java.util.List;
 /**
  * Created by marko on 1/4/15.
  */
-public class Timed extends Modifier {
+public class Timed extends TimeDecorator {
 
+    private Modifier modifier;
     private final long period;
-    private final long startTime = System.nanoTime();
-
+    private final long startTime;
+    long currentTime = 0;
 
     /**
      * @param period How long until modifier is done.
      *
      * If period and "app tick" are equal update will return before calling Decorator update.
      */
-    public Timed(long period) {
+    public Timed(Modifier modifier, long period) {
+        this.modifier = modifier;
         this.period = period;
+        this.description = modifier.getDescription();
+        this.value = modifier.getValue();
+        startTime = System.nanoTime();
     }
 
     @Override
     public void update(Player player) {
-        long currentTime = System.nanoTime();
+        currentTime = System.nanoTime();
         if((currentTime - startTime) / 1000000  > period)
         {
             setDone(true);
         }
+        modifier.update(player);
     }
 
+    @Override
+    public long getTimeLeft() {
+        return period - (currentTime - startTime) / 1000000;
+    }
 
 }

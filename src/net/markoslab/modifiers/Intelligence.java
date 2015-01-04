@@ -5,21 +5,15 @@ import net.markoslab.Player;
 /**
  * Created by marko on 1/4/15.
  */
-public class Intelligence extends StatDecorator {
-    private Modifier modifier;
+public class Intelligence extends Modifier {
 
-    public Intelligence(Modifier modifier, String description, float value) {
-        super(description, value);
-        this.modifier = modifier;
+    public Intelligence(String description, float value) {
+        this.description = description;
+        this.value = value;
     }
 
     @Override
     public void update(Player player) {
-        modifier.update(player);
-        if (modifier.isDone()) {
-            setDone(true);
-            return;
-        }
         player.setIntelligence(player.getIntelligence() + Player.toProcent(value));
     }
 

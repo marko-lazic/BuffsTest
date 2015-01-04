@@ -10,8 +10,9 @@ import java.util.List;
  */
 public abstract class Modifier {
 
-    private String description = "Unknown modifier.";
-    private boolean isDone = false;
+    protected String description = "Unknown modifier.";
+    protected boolean isDone = false;
+    protected float value;
 
     public abstract void update(Player player);
 
@@ -21,6 +22,14 @@ public abstract class Modifier {
 
     public void setDone(boolean isDone) {
         this.isDone = isDone;
+    }
+
+    public float getValue() {
+        return value;
+    }
+
+    public void setValue(float value) {
+        this.value = value;
     }
 
     public String getDescription() {

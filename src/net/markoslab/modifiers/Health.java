@@ -5,21 +5,15 @@ import net.markoslab.Player;
 /**
  * Created by marko on 1/4/15.
  */
-public class Health extends StatDecorator {
-    private Modifier modifier;
+public class Health extends Modifier {
 
-    public Health(Modifier modifier, String description, float value) {
-        super(description, value);
-        this.modifier = modifier;
+    public Health(String description, float value) {
+        this.description = description;
+        this.value = value;
     }
 
     @Override
     public void update(Player player) {
-        modifier.update(player);
-        if (modifier.isDone()) {
-            setDone(true);
-            return;
-        }
         player.setHealth(player.getHealth() + Player.toProcent(value));
     }
 

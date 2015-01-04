@@ -33,9 +33,10 @@ public class Player extends Entity
 		}
 		String modifierDescription = toModifierString();
 		printStat(modifierDescription);
+
 		if (feed <= 0) {
-			Modifier hungerModifier = new Once();
-			modifiers.add(new Health(hungerModifier, "Starvation -5", -5));
+			Modifier hungerModifier = new Health("Starvation -5", -5);
+			modifiers.add(new Once(hungerModifier));
 		}
 		if (health <= 0)
 		{
@@ -60,7 +61,11 @@ public class Player extends Entity
 		if (!modifiers.isEmpty())
 		{
 			for (int i = 0; i < modifiers.size(); i++) {
-				modifierNames += ", " + modifiers.get(i).getDescription();
+				if (modifiers.get(i) instanceof Timed) {
+					modifierNames += ", " + modifiers.get(i).getDescription() + " (" + ((Timed) modifiers.get(i)).getTimeLeft() + ")";
+				}
+				else
+					modifierNames += ", " + modifiers.get(i).getDescription();
 			}
 		}
 		return modifierNames;
