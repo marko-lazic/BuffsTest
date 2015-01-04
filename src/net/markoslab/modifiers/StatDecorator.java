@@ -1,7 +1,5 @@
 package net.markoslab.modifiers;
 
-import net.markoslab.Player;
-
 /**
  * Created by marko on 1/4/15.
  */
@@ -21,4 +19,5 @@ public abstract class StatDecorator extends Modifier {
         this.value = value;
         return this;
     }
+
 }

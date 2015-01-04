@@ -2,6 +2,8 @@ package net.markoslab.modifiers;
 
 import net.markoslab.Player;
 
+import java.util.List;
+
 /**
  * Created by marko on 1/4/15.
  */
@@ -11,6 +13,11 @@ public class Timed extends Modifier {
     private final long startTime = System.nanoTime();
 
 
+    /**
+     * @param period How long until modifier is done.
+     *
+     * If period and "app tick" are equal update will return before calling Decorator update.
+     */
     public Timed(long period) {
         this.period = period;
     }
@@ -20,8 +27,9 @@ public class Timed extends Modifier {
         long currentTime = System.nanoTime();
         if((currentTime - startTime) / 1000000  > period)
         {
-            destroy(player.getModifiers());
+            setDone(true);
         }
     }
+
 
 }

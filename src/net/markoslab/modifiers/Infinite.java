@@ -11,4 +11,5 @@ public class Infinite extends Modifier {
     public void update(Player player) {
 
     }
+
 }

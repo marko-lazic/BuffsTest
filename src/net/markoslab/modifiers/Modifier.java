@@ -11,18 +11,16 @@ import java.util.List;
 public abstract class Modifier {
 
     private String description = "Unknown modifier.";
+    private boolean isDone = false;
 
     public abstract void update(Player player);
 
-    public void destroy(List<Modifier> list) {
-        if (list.contains(this))
-        {
-            Iterator<Modifier> iter = list.iterator();
-            while(iter.hasNext())
-            {
-                if (iter.next() == this) iter.remove();
-            }
-        }
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean isDone) {
+        this.isDone = isDone;
     }
 
     public String getDescription() {

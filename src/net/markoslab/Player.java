@@ -1,6 +1,6 @@
 package net.markoslab;
 
-import net.markoslab.modifiers.Modifier;
+import net.markoslab.modifiers.*;
 
 import java.util.*;
 
@@ -11,42 +11,43 @@ public class Player extends Entity
 	float feed = 0.90F;
 	private ArtificialIntelligence artificialIntelligence;
 
-	public List<Modifier> getModifiers() {
-		return modifiers;
-	}
-
 	private List<Modifier> modifiers = new ArrayList<Modifier>();
-	
+
 	public Player(Game game)
 	{
 		super(game);
 		artificialIntelligence = new ArtificialIntelligence();
 		printStat("");
 	}
-	
+
 	public void update()
 	{
 		artificialIntelligence.update(this);
 
 		for (int i = 0; i < modifiers.size(); i++)
 		{
-			modifiers.get(i).update();
+			modifiers.get(i).update(this);
+			if (modifiers.get(i).isDone()) {
+				modifiers.remove(modifiers.get(i));
+			}
 		}
-		printStat(toModifierString());
+		String modifierDescription = toModifierString();
+		printStat(modifierDescription);
 		if (feed <= 0) {
-			new HealthModifier(this, -5, -1, "Starvation -5");
+			Modifier hungerModifier = new Once();
+			modifiers.add(new Health(hungerModifier, "Starvation -5", -5));
 		}
 		if (health <= 0)
 		{
-			System.out.print("net.markoslab.Player died.");
+			System.out.print("Player died.");
 			die();
 		}
 	}
-	
+
 	public void printStat(String modifierNames)
 	{
-		
-		System.out.print("h: " + (int) ( getHealth() * 100) + " " + 
+
+		System.out.print("h: " + (int) ( getHealth() * 100) + " " +
 							"f: " + (int) ( getFeed() * 100) + " " +
 							"b: " + (int) ( getIntelligence() * 100));
 		System.out.print(modifierNames);
@@ -58,14 +59,25 @@ public class Player extends Entity
 		String modifierNames = "";
 		if (!modifiers.isEmpty())
 		{
-			for (Modifier m : modifiers) { modifierNames += ", " + m.getDescription();}
+			for (int i = 0; i < modifiers.size(); i++) {
+				modifierNames += ", " + modifiers.get(i).getDescription();
+			}
 		}
 		return modifierNames;
 	}
-	
+
 	public static float toProcent(float amount)
 	{
 		return amount / 100.0F;
+	}
+
+	public List<Modifier> getModifiers() {
+		return modifiers;
+	}
+
+	public Player addModifier(Modifier modifier) {
+		this.modifiers.add( modifier);
+		return this;
 	}
 
 	public void setFeed(float feed)
