@@ -1,6 +1,6 @@
 package net.markoslab.modifiers;
 
-import net.markoslab.Player;
+import net.markoslab.Stats.Stats;
 
 /**
  * Created by marko on 1/4/15.
@@ -16,8 +16,8 @@ public class Infinite extends TimeDecorator {
     }
 
     @Override
-    public void update(Player player) {
-        modifier.update(player);
+    public void update(Stats stats) {
+        modifier.update(stats);
     }
 
     @Override

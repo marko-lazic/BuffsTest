@@ -1,5 +1,6 @@
 package net.markoslab;
 
+import net.markoslab.Player.Player;
 import net.markoslab.modifiers.*;
 
 import java.util.*;
@@ -21,7 +22,7 @@ public class Game
 		player.addModifier(new Once(new Health("Fire Damage -70", -70)));
 		player.addModifier(new Timed(new Health("Beginner luck +15", 15), 3000));
 		player.addModifier(new Infinite(new Health("Regen +0.5", .5f)));
-		player.addModifier(new Infinite(new Food("Hunger -15", -15)));
+		player.addModifier(new Infinite(new Strength("Infinite Weakness -15", -15)));
 
 	}
 

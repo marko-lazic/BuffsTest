@@ -1,14 +1,16 @@
-package net.markoslab;
+package net.markoslab.Player;
 
+import net.markoslab.Entity;
+import net.markoslab.Game;
+import net.markoslab.Stats.Stat;
+import net.markoslab.Stats.Stats;
 import net.markoslab.modifiers.*;
 
 import java.util.*;
 
 public class Player extends Entity
 {
-	float health = 1.0F;
-	float intelligence = 1.0F;
-	float feed = 0.90F;
+	private Stats stats = new Stats(new Stat(100, 100), new Stat(100, 100), new Stat(90, 100));
 	private ArtificialIntelligence artificialIntelligence;
 
 	private List<Modifier> modifiers = new ArrayList<Modifier>();
@@ -26,7 +28,7 @@ public class Player extends Entity
 
 		for (int i = 0; i < modifiers.size(); i++)
 		{
-			modifiers.get(i).update(this);
+			modifiers.get(i).update(getStats());
 			if (modifiers.get(i).isDone()) {
 				modifiers.remove(modifiers.get(i));
 			}
@@ -34,11 +36,11 @@ public class Player extends Entity
 		String modifierDescription = toModifierString();
 		printStat(modifierDescription);
 
-		if (feed <= 0) {
+		if (stats.strength.getCurrent() <= 0) {
 			Modifier hungerModifier = new Health("Starvation -5", -5);
 			modifiers.add(new Once(hungerModifier));
 		}
-		if (health <= 0)
+		if (stats.health.getCurrent() <= 0)
 		{
 			System.out.print("Player died.");
 			die();
@@ -48,9 +50,9 @@ public class Player extends Entity
 	public void printStat(String modifierNames)
 	{
 
-		System.out.print("h: " + (int) ( getHealth() * 100) + " " +
-							"f: " + (int) ( getFeed() * 100) + " " +
-							"b: " + (int) ( getIntelligence() * 100));
+		System.out.print("h: " + (int) (stats.health.getCurrent()) + " " +
+							"s: " + (int) (stats.strength.getCurrent()) + " " +
+							"i: " + (int) ( stats.intelligence.getCurrent()));
 		System.out.print(modifierNames);
 		System.out.println();
 	}
@@ -80,39 +82,7 @@ public class Player extends Entity
 		return this;
 	}
 
-	public void setFeed(float feed)
-	{
-		this.feed = feed;
-		if (this.feed < 0.0F) this.feed = 0.0F;
-		if (this.feed > 1.0F) this.feed = 1.0F;
-	}
-
-	public float getFeed()
-	{
-		return feed;
-	}
-
-	public void setIntelligence(float intelligence)
-	{
-		this.intelligence = intelligence;
-		if (this.intelligence < 0.0F)  this.intelligence = 0.0F;
-		if (this.intelligence > 1.0F) this.intelligence = 1.0F;
-	}
-
-	public float getIntelligence()
-	{
-		return intelligence;
-	}
-
-	public void setHealth(float health)
-	{
-		this.health = health;
-		if (this.health < 0.0F) this.health = 0.0F;
-		if (this.health > 1.0F) this.health = 1.0F;
-	}
-
-	public float getHealth()
-	{
-		return health;
+	public Stats getStats() {
+		return this.stats;
 	}
 }

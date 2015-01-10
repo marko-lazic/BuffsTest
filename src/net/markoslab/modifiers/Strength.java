@@ -6,17 +6,17 @@ import net.markoslab.Stats.Stats;
 /**
  * Created by marko on 1/4/15.
  */
-public class Intelligence extends Modifier {
+public class Strength extends Modifier {
 
-    public Intelligence(String description, float value) {
+    public Strength(String description, float value) {
         this.description = description;
         this.value = value;
     }
 
     @Override
     public void update(Stats stats) {
-        if (value > 0) stats.intelligence.increase(value);
-        else if (value < 0) stats.intelligence.decrease(value);
+        if (value > 0) stats.strength.increase(value);
+        else if (value < 0) stats.strength.decrease(value);
     }
 
 }

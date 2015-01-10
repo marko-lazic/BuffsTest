@@ -38,27 +38,32 @@ public class Stat {
         return this;
     }
 
-    public Stat increase(float stat) {
-        this.currentStat += stat;
+    public Stat increase(float value) {
+        this.currentStat += value;
         if (this.currentStat > maxStat)
             this.currentStat = maxStat;
         return this;
     }
 
-    public Stat decrease(float stat) {
-        this.currentStat -= stat;
+    public Stat decrease(float value) {
+        value = Math.abs(value);
+        this.currentStat -= value;
         if (this.currentStat < 0)
             this.currentStat = 0;
         return this;
     }
 
-    public Stat increasePrecent(float stat) {
-        this.increase(stat * (maxStat / 100.0F));
+    public Stat increasePrecent(float value) {
+        this.increase(value * (maxStat / 100.0F));
         return this;
     }
 
-    public Stat decreasePrecent(float stat) {
-        this.decrease(stat * (maxStat / 100.0F));
+    public Stat decreasePrecent(float value) {
+        this.decrease(value * (maxStat / 100.0F));
         return this;
+    }
+
+    public static float toProcent(float value) {
+        return value / 100.0F;
     }
 }

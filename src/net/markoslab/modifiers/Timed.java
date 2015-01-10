@@ -1,8 +1,6 @@
 package net.markoslab.modifiers;
 
-import net.markoslab.Player;
-
-import java.util.List;
+import net.markoslab.Stats.Stats;
 
 /**
  * Created by marko on 1/4/15.
@@ -28,13 +26,13 @@ public class Timed extends TimeDecorator {
     }
 
     @Override
-    public void update(Player player) {
+    public void update(Stats stats) {
         currentTime = System.nanoTime();
         if((currentTime - startTime) / 1000000  > period)
         {
             setDone(true);
         }
-        modifier.update(player);
+        modifier.update(stats);
     }
 
     @Override

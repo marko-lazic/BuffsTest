@@ -1,8 +1,6 @@
 package net.markoslab.modifiers;
 
-import net.markoslab.Player;
-
-import java.util.List;
+import net.markoslab.Stats.Stats;
 
 /**
  * Created by marko on 1/4/15.
@@ -18,11 +16,11 @@ public class Once extends TimeDecorator {
     }
 
     @Override
-    public void update(Player player) {
+    public void update(Stats stats) {
         if (isOnce) {
             setDone(true);
         } else {
-            modifier.update(player);
+            modifier.update(stats);
         }
         isOnce = true;
     }

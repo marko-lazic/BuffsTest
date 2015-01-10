@@ -1,9 +1,6 @@
 package net.markoslab.modifiers;
 
-import net.markoslab.Player;
-
-import java.util.Iterator;
-import java.util.List;
+import net.markoslab.Stats.Stats;
 
 /**
  * Created by marko on 1/4/15.
@@ -14,7 +11,7 @@ public abstract class Modifier {
     protected boolean isDone = false;
     protected float value;
 
-    public abstract void update(Player player);
+    public abstract void update(Stats stats);
 
     public boolean isDone() {
         return isDone;
