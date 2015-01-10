@@ -18,14 +18,10 @@ public class Game
 		Player player = new Player(this);
 		player.addToWorld();
 
-		Modifier fireModifier = new Health("Fire Damage -70", -70);
-		player.addModifier(new Once(fireModifier));
-		Modifier beginnerLuck = new Health("Beginner luck +15", 15);
-		player.addModifier(new Timed(beginnerLuck, 3000));
-		Modifier regenModifier = new Health("Regen +0.5", .5f);
-		player.addModifier(new Infinite(regenModifier));
-		Modifier hungerModifier = new Food("Hunger -15", -15);
-		player.addModifier(new Infinite(hungerModifier));
+		player.addModifier(new Once(new Health("Fire Damage -70", -70)));
+		player.addModifier(new Timed(new Health("Beginner luck +15", 15), 3000));
+		player.addModifier(new Infinite(new Health("Regen +0.5", .5f)));
+		player.addModifier(new Infinite(new Food("Hunger -15", -15)));
 
 	}
 

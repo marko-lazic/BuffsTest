@@ -10,9 +10,9 @@ import java.util.List;
 public class Timed extends TimeDecorator {
 
     private Modifier modifier;
+    private long currentTime = 0;
     private final long period;
     private final long startTime;
-    long currentTime = 0;
 
     /**
      * @param period How long until modifier is done.

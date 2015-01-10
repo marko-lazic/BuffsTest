@@ -62,18 +62,13 @@ public class Player extends Entity
 		{
 			for (int i = 0; i < modifiers.size(); i++) {
 				if (modifiers.get(i) instanceof Timed) {
-					modifierNames += ", " + modifiers.get(i).getDescription() + " (" + ((Timed) modifiers.get(i)).getTimeLeft() + ")";
+					modifierNames += ", " + modifiers.get(i).getDescription() + " [" + ((Timed) modifiers.get(i)).getTimeLeft() + "]";
 				}
 				else
 					modifierNames += ", " + modifiers.get(i).getDescription();
 			}
 		}
 		return modifierNames;
-	}
-
-	public static float toProcent(float amount)
-	{
-		return amount / 100.0F;
 	}
 
 	public List<Modifier> getModifiers() {
