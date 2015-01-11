@@ -1,13 +1,15 @@
 package net.markoslab;
 
-import net.markoslab.Player.Player;
+import net.markoslab.entities.Entity;
+import net.markoslab.entities.player.Player;
 import net.markoslab.modifiers.*;
 
 import java.util.*;
 
 public class Game
 {
-	List<Entity> entities = new ArrayList<Entity>();
+	//public List<Entity> entities = new ArrayList<Entity>();
+	public World world;
 	private Timer timer;
 	private TimerTask clock;
 	
@@ -16,7 +18,8 @@ public class Game
 		timer = new Timer();
 		clock = new Clock(this);
 		timer.scheduleAtFixedRate(clock, 1000, 1000);
-		Player player = new Player(this);
+		this.world = new World(this);
+		Player player = new Player(world);
 		player.addToWorld();
 
 		player.getModifiers().add(new Once(new StatsModifier(Type.HEALTH, "Fire Damage -70", -70)));
@@ -29,13 +32,7 @@ public class Game
 
 	public void update()
 	{
-		// Update Entities
-		if (!entities.isEmpty())
-			for (int i = 0; i < entities.size(); i++)
-			{
-				entities.get(i).update();
-			}
-		
+		world.update();
 	}
 	
 	public void run()

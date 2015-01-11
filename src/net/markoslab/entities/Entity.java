@@ -1,25 +1,27 @@
-package net.markoslab;
+package net.markoslab.entities;
+
+import net.markoslab.World;
 
 import java.util.*;
 
-public class Entity
+public abstract class Entity
 {
 
-	private Game game;
-	public Entity(Game game) {
-		this.game = game;
+	private World world;
+	public Entity(World world) {
+		this.world = world;
 	}
 
 	public Entity addToWorld()
 	{
-		this.game.entities.add(this);
+		this.world.entities.add(this);
 		return this;
 	}
 	
 	public void update() {}
 
 	public void die() {
-		List<Entity> list = game.entities;
+		List<Entity> list = world.entities;
 		Iterator<Entity> itr = list.iterator();
 		while(itr.hasNext())
 		{

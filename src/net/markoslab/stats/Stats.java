@@ -1,4 +1,4 @@
-package net.markoslab.Stats;
+package net.markoslab.stats;
 
 /**
  * Created by marko on 1/10/15.

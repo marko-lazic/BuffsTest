@@ -1,7 +1,7 @@
 package net.markoslab.modifiers;
 
 
-import net.markoslab.Player.Player;
+import net.markoslab.entities.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;

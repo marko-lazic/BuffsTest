@@ -1,20 +1,18 @@
-package net.markoslab.Player;
+package net.markoslab.entities.player;
 
-import net.markoslab.Entity;
-import net.markoslab.Game;
-import net.markoslab.Stats.Stat;
-import net.markoslab.Stats.Stats;
+import net.markoslab.World;
+import net.markoslab.entities.Entity;
+import net.markoslab.stats.Stat;
+import net.markoslab.stats.Stats;
 import net.markoslab.modifiers.*;
-
-import java.util.*;
 
 public class Player extends Entity {
     private Stats stats = new Stats(new Stat(100, 100), new Stat(100, 100), new Stat(90, 100));
     private Modifiers modifiers = new Modifiers();
     private ArtificialIntelligence artificialIntelligence = new ArtificialIntelligence();
 
-    public Player(Game game) {
-        super(game);
+    public Player(World world) {
+        super(world);
         printStat("");
     }
 

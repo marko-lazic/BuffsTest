@@ -1,6 +1,6 @@
 package net.markoslab.modifiers;
 
-import net.markoslab.Stats.Stats;
+import net.markoslab.stats.Stats;
 
 /**
  * Created by marko on 1/4/15.

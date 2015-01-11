@@ -1,6 +1,6 @@
-package net.markoslab.Player;
+package net.markoslab.entities.player;
 
-import net.markoslab.Stats.Stat;
+import net.markoslab.stats.Stat;
 import net.markoslab.modifiers.Strength;
 import net.markoslab.modifiers.Health;
 import net.markoslab.modifiers.Modifier;
@@ -39,7 +39,7 @@ public class ArtificialIntelligence {
             player.getModifiers().add(new Once(hungerModifier));
         }
         if (player.getStats().health.getCurrent() <= 0) {
-            System.out.print("Player died.");
+            System.out.print("player died.");
             player.die();
         }
 
