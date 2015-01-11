@@ -8,42 +8,35 @@ import net.markoslab.modifiers.*;
 
 import java.util.*;
 
-public class Player extends Entity
-{
-	private Stats stats = new Stats(new Stat(100, 100), new Stat(100, 100), new Stat(90, 100));
-	private ArtificialIntelligence artificialIntelligence;
+public class Player extends Entity {
+    private Stats stats = new Stats(new Stat(100, 100), new Stat(100, 100), new Stat(90, 100));
+    private Modifiers modifiers = new Modifiers();
+    private ArtificialIntelligence artificialIntelligence = new ArtificialIntelligence();
 
-	private Modifiers modifiers = new Modifiers();
+    public Player(Game game) {
+        super(game);
+        printStat("");
+    }
 
-	public Player(Game game)
-	{
-		super(game);
-		artificialIntelligence = new ArtificialIntelligence();
-		printStat("");
-	}
+    public void update() {
+        artificialIntelligence.update(this);
+        modifiers.update(this);
+        printStat(modifiers.toString());
+    }
 
-	public void update()
-	{
-		artificialIntelligence.update(this);
-		modifiers.update(this);
+    public void printStat(String modifierNames) {
+        System.out.print("h: " + (int) (stats.health.getCurrent()) + " " +
+                "s: " + (int) (stats.strength.getCurrent()) + " " +
+                "i: " + (int) (stats.intelligence.getCurrent()));
+        System.out.print(modifierNames);
+        System.out.println();
+    }
 
-		String modifierDescription = modifiers.toModifierString();
-		printStat(modifierDescription);
-	}
+    public Stats getStats() {
+        return this.stats;
+    }
 
-	public void printStat(String modifierNames)
-	{
-		System.out.print("h: " + (int) (stats.health.getCurrent()) + " " +
-							"s: " + (int) (stats.strength.getCurrent()) + " " +
-							"i: " + (int) ( stats.intelligence.getCurrent()));
-		System.out.print(modifierNames);
-		System.out.println();
-	}
-
-	public Stats getStats() {
-		return this.stats;
-	}
-	public Modifiers getModifiers() {
-		return this.modifiers;
-	}
+    public Modifiers getModifiers() {
+        return this.modifiers;
+    }
 }

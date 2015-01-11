@@ -30,7 +30,7 @@ public class Stat {
     }
 
     public float getCurrentPrecent() {
-        return currentStat  / maxStat;
+        return currentStat / maxStat;
     }
 
     public Stat setCurrent(float currentStat) {

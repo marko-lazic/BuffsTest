@@ -17,8 +17,7 @@ public class Modifiers {
 
 
     public Modifiers update(Player player) {
-        for (int i = 0; i < modifiers.size(); i++)
-        {
+        for (int i = 0; i < modifiers.size(); i++) {
             modifiers.get(i).update(player.getStats());
             if (modifiers.get(i).isDone()) {
                 modifiers.remove(modifiers.get(i));
@@ -28,16 +27,14 @@ public class Modifiers {
         return this;
     }
 
-    public String toModifierString()
-    {
+    @Override
+    public String toString() {
         String modifierNames = "";
-        if (!modifiers.isEmpty())
-        {
+        if (!modifiers.isEmpty()) {
             for (int i = 0; i < modifiers.size(); i++) {
                 if (modifiers.get(i) instanceof Timed) {
                     modifierNames += ", " + modifiers.get(i).getDescription() + " [" + ((Timed) modifiers.get(i)).getTimeLeft() + "]";
-                }
-                else
+                } else
                     modifierNames += ", " + modifiers.get(i).getDescription();
             }
         }
@@ -54,7 +51,7 @@ public class Modifiers {
     }
 
     public Modifiers add(Modifier modifier) {
-        this.modifiers.add( modifier);
+        this.modifiers.add(modifier);
         return this;
     }
 

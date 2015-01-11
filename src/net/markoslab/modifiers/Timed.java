@@ -14,8 +14,8 @@ public class Timed extends TimeDecorator {
 
     /**
      * @param period How long until modifier is done.
-     *
-     * If period and "app tick" are equal update will return before calling Decorator update.
+     *               <p/>
+     *               If period and "app tick" are equal update will return before calling Decorator update.
      */
     public Timed(Modifier modifier, long period) {
         this.modifier = modifier;
@@ -28,8 +28,7 @@ public class Timed extends TimeDecorator {
     @Override
     public void update(Stats stats) {
         currentTime = System.nanoTime();
-        if((currentTime - startTime) / 1000000  > period)
-        {
+        if ((currentTime - startTime) / 1000000 > period) {
             setDone(true);
         }
         modifier.update(stats);

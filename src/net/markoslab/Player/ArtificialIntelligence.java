@@ -9,15 +9,13 @@ import net.markoslab.modifiers.Once;
 /**
  * Created by marko on 1/1/15.
  */
-public class ArtificialIntelligence
-{
+public class ArtificialIntelligence {
 
 
     private int applesCount = 1;
     private int healthPotionsCount = 1;
 
-    public ArtificialIntelligence()
-    {
+    public ArtificialIntelligence() {
 
     }
 
@@ -40,8 +38,7 @@ public class ArtificialIntelligence
             Modifier hungerModifier = new Health("Starvation -5", -5);
             player.getModifiers().add(new Once(hungerModifier));
         }
-        if (player.getStats().health.getCurrent() <= 0)
-        {
+        if (player.getStats().health.getCurrent() <= 0) {
             System.out.print("Player died.");
             player.die();
         }
