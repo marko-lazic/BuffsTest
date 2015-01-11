@@ -19,12 +19,10 @@ public class Game
 		Player player = new Player(this);
 		player.addToWorld();
 
-		//player.addModifier(new Once(new Health("Fire Damage -70", -70)));
-		player.addModifier(new Once(new StatsModifier(Type.HEALTH, "Fire Damage -70", -70)));
-		player.addModifier(new Timed(new Health("Beginner luck +15", 15), 3000));
-		player.addModifier(new Infinite(new Health("Regen +0.5", .5f)));
-//		player.addModifier(new Infinite(new Strength("Infinite Weakness -15", -15)));
-		player.addModifier(new Infinite(new StatsModifier(Type.STRENGTH, "Infinite Weakness -15", -15)));
+		player.getModifiers().add(new Once(new StatsModifier(Type.HEALTH, "Fire Damage -70", -70)));
+		player.getModifiers().add(new Timed(new Health("Beginner luck +15", 15), 3000));
+		player.getModifiers().add(new Infinite(new Health("Regen +0.5", .5f)));
+		player.getModifiers().add(new Infinite(new StatsModifier(Type.STRENGTH, "Infinite Weakness -15", -15)));
 
 
 	}
