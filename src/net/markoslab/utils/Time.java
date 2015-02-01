@@ -13,10 +13,9 @@ public class Time {
     private TimerTask clock;
 
     public Time(Game game) {
-       /* timer = new Timer();
+        timer = new Timer();
         clock = new Clock(game);
-        clock.
-        timer.scheduleAtFixedRate(clock, 1000, 1000);*/
+        timer.scheduleAtFixedRate(clock, 1000, 1000);
     }
 
 }

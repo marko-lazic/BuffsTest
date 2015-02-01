@@ -34,7 +34,7 @@ public class Clock extends TimerTask {
         {
             timeInHours = 0;
         }
-        System.out.print(this.toString() + " - ");
+        //System.out.print(this.toString() + " - ");
         game.update();
     }
 
