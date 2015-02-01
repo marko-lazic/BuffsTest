@@ -7,6 +7,8 @@ import net.markoslab.World;
  */
 public class Person extends Entity {
 
+    /* TODO: NAME, AGE, JOB DECORATOR, etc. */
+
     public Person(World world) {
         super(world);
     }

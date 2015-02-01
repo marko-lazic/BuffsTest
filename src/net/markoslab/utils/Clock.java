@@ -1,4 +1,6 @@
-package net.markoslab;
+package net.markoslab.utils;
+
+import net.markoslab.Game;
 
 import java.util.TimerTask;
 
@@ -40,4 +42,6 @@ public class Clock extends TimerTask {
     public String toString() {
         return String.format("%d:%d:%d", timeInHours, timeInMinutes, timeInSeconds);
     }
+
 }
+
