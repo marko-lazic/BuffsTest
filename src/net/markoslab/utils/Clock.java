@@ -7,6 +7,7 @@ import java.util.TimerTask;
 /**
  * Created by marko on 1/1/15.
  */
+@Deprecated
 public class Clock extends TimerTask {
     private int timeInSeconds = 0;
     private int timeInMinutes = 0;
@@ -35,7 +36,7 @@ public class Clock extends TimerTask {
             timeInHours = 0;
         }
         //System.out.print(this.toString() + " - ");
-        game.update();
+        //game.update();
     }
 
     @Override

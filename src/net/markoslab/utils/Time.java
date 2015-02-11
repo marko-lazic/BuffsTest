@@ -8,14 +8,15 @@ import java.util.TimerTask;
 /**
  * Created by marko on 2/1/15.
  */
+@Deprecated
 public class Time {
     private Timer timer;
     private TimerTask clock;
 
     public Time(Game game) {
-        timer = new Timer();
+        /*timer = new Timer();
         clock = new Clock(game);
-        timer.scheduleAtFixedRate(clock, 1000, 1000);
+        timer.scheduleAtFixedRate(clock, 1000, 1000);*/
     }
 
 }

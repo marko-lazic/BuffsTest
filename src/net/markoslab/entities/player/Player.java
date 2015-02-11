@@ -1,5 +1,7 @@
 package net.markoslab.entities.player;
 
+import com.googlecode.lanterna.Symbols;
+import net.markoslab.Gui;
 import net.markoslab.World;
 import net.markoslab.entities.Entity;
 import net.markoslab.stats.Stat;
@@ -13,7 +15,6 @@ public class Player extends Entity {
 
     public Player(World world) {
         super(world);
-        printStat("");
     }
 
     public void update() {
@@ -23,11 +24,11 @@ public class Player extends Entity {
     }
 
     public void printStat(String modifierNames) {
-        System.out.print("h: " + (int) (stats.health.getCurrent()) + " " +
-                "s: " + (int) (stats.strength.getCurrent()) + " " +
-                "i: " + (int) (stats.intelligence.getCurrent()));
-        System.out.print(modifierNames);
-        System.out.println();
+        String statsToString = Symbols.HEART + ": " + (int) (stats.health.getCurrent()) + " " +
+                "STRENGTH: " + (int) (stats.strength.getCurrent()) + " " +
+                "INTELLIGENCE: " + (int) (stats.intelligence.getCurrent());
+        Gui.getInstance().writeLine(2, 4, statsToString);
+        Gui.getInstance().writeLine(2, 5, modifierNames);
     }
 
     public Stats getStats() {
