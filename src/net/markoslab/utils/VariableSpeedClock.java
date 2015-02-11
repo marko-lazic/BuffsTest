@@ -17,16 +17,4 @@ public class VariableSpeedClock {
     public long getTime () {
         return (long) ((System.currentTimeMillis() - this.startTime) * this.speed + this.startTime);
     }
-/*
-    public static void main(String [] args) throws InterruptedException {
-
-        long st = System.currentTimeMillis();
-        VariableSpeedClock vsc = new VariableSpeedClock(2.3);
-
-        Thread.sleep(1000);
-
-        System.out.println(vsc.getTime() - st);
-        System.out.println(System.currentTimeMillis() - st);
-
-    }*/
 }

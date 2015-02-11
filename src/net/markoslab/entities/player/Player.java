@@ -28,7 +28,12 @@ public class Player extends Entity {
                 "STRENGTH: " + (int) (stats.strength.getCurrent()) + " " +
                 "INTELLIGENCE: " + (int) (stats.intelligence.getCurrent());
         Gui.getInstance().writeLine(2, 4, statsToString);
-        Gui.getInstance().writeLine(2, 5, modifierNames);
+        Gui.getInstance().writeLine(2, 5, "--------MODIFIERS--------");
+        String[] mods = modifierNames.split(", ");
+        for (int iter = 0; iter < mods.length; iter++) {
+            Gui.getInstance().writeLine(2, 5 + iter, mods[iter]);
+        }
+
     }
 
     public Stats getStats() {
