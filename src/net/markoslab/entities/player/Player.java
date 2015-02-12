@@ -1,6 +1,7 @@
 package net.markoslab.entities.player;
 
 import com.googlecode.lanterna.Symbols;
+import com.googlecode.lanterna.TextColor;
 import net.markoslab.Gui;
 import net.markoslab.World;
 import net.markoslab.entities.Entity;
@@ -31,7 +32,19 @@ public class Player extends Entity {
         Gui.getInstance().writeLine(2, 5, "--------MODIFIERS--------");
         String[] mods = modifierNames.split(", ");
         for (int iter = 0; iter < mods.length; iter++) {
-            Gui.getInstance().writeLine(2, 5 + iter, mods[iter]);
+            if (mods[iter].contains("Double Cheese Burger +10") || // GREEN
+                    mods[iter].contains("Health Medkit +30") ||
+                    mods[iter].contains("Beginner luck +15") ||
+                    mods[iter].contains("Regen +0.5")) {
+                Gui.getInstance().writeLine(2, 5 + iter, mods[iter],TextColor.ANSI.GREEN, TextColor.ANSI.DEFAULT);
+
+            } else if (mods[iter].contains(("Fire Damage -70")) || // RED
+                        mods[iter].contains("Infinite Weakness -4") ||
+                        mods[iter].contains(("Starvation -5" ))) {
+                Gui.getInstance().writeLine(2, 5 + iter, mods[iter], TextColor.ANSI.RED, TextColor.ANSI.DEFAULT);
+            } else { // WHITE
+                Gui.getInstance().writeLine(2, 5 + iter, mods[iter], TextColor.ANSI.DEFAULT, TextColor.ANSI.DEFAULT);
+            }
         }
 
     }

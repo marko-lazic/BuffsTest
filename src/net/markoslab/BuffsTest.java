@@ -36,10 +36,11 @@ public class BuffsTest implements Game {
 
         Player player = (Player) new Player(world).addToWorld();
 
+        // This is what the project is about.
         player.getModifiers().add(new Once(new StatsModifier(Type.HEALTH, "Fire Damage -70", -70)));
         player.getModifiers().add(new Timed(new Health("Beginner luck +15", 15), 3000));
         player.getModifiers().add(new Infinite(new Health("Regen +0.5", .5f)));
-        player.getModifiers().add(new Infinite(new StatsModifier(Type.STRENGTH, "Infinite Weakness -0.5", -0.5f)));
+        player.getModifiers().add(new Infinite(new StatsModifier(Type.STRENGTH, "Infinite Weakness -4", -4)));
 
     }
 
@@ -53,13 +54,11 @@ public class BuffsTest implements Game {
         realDate = cal.getTime();
         gameDate = new Date(speedClock.getTime());
 
-        // Draw gui
+        // Draw time gui
         Gui.getInstance().writeLine(1,1, "Real date: " + dateFormat.format(realDate));
         Gui.getInstance().writeLine(1,2, "             " + timeFormat.format(realDate)); // Real time
         Gui.getInstance().writeLine(40,1, "Game date: " + dateFormat.format(gameDate));
         Gui.getInstance().writeLine(40,2, "             " + timeFormat.format(gameDate)); // Game time
         Gui.getInstance().flush();
     }
-
-
 }

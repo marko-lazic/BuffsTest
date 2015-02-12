@@ -67,6 +67,13 @@ public class Gui {
             e.printStackTrace();
         }
         writeLine(i, i1, str);
+        try {
+            terminal.setForegroundColor(TextColor.ANSI.DEFAULT);
+            terminal.setBackgroundColor(TextColor.ANSI.DEFAULT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void clearScreen() {
